@@ -10,7 +10,7 @@ connection = pymysql.connect(host='localhost',
                             
 try:
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM RECIPE;"
+        sql = "SELECT * FROM USER;"
         cursor.execute(sql)
         result=cursor.fetchall()
         print(result)
