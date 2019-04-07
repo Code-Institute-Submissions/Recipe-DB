@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>This us a Landing Page</h1>
+    <h1>This us a Landing Page</h1>
+    {% for RECIPE in RecipeBook %}
+    <p>{{RECIPE.recipe_name}}</p>
+    {% endfor %}
 {% endblock %}
