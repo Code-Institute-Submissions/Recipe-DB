@@ -1,6 +1,7 @@
 import os
 import pymysql
 from flask import Flask, render_template, redirect, request, url_for
+from flaskext.mysql import MySQL
 
 app = Flask (__name__)
 
