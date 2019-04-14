@@ -7,11 +7,15 @@ app = Flask (__name__)
 
 @app.route('/')
 def getLanding():
-    return render_template("landing_page.html",)
+    return render_template("landing_page.html")
 
 @app.route('/login')
 def getLogin():
     return render_template("login.html")
+    
+@app.route('/recipes')
+def getRecipes():
+    return render_template("recipes.html")
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
@@ -30,7 +34,6 @@ try:
         sql = "SELECT user_name FROM USER;"
         cursor.execute(sql)
         result=cursor.fetchall()
-        print(result)
 
 finally:
     connection.close()
