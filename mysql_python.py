@@ -1,13 +1,24 @@
 import os
-import pymysql
 from flask import Flask, render_template, redirect, request, url_for
-from flaskext.mysql import MySQL
+import pymysql
+
+username = os.getenv('C9_USER')
+
+connection = pymysql.connect(host='localhost',
+                            user=username,
+                            password='',
+                            db='RecipeBook')
 
 app = Flask (__name__)
+#api = Api(app)
 
 @app.route('/')
 def getLanding():
-    return render_template("landing_page.html")
+    cursor = connection.cursor()
+    sql = "SELECT * from USER"
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    return render_template("landing_page.html", result=result)
 
 @app.route('/login')
 def getLogin():
@@ -22,19 +33,5 @@ if __name__ == '__main__':
         port=int(os.environ.get('PORT')),
         debug=True)
 
-username = os.getenv('C9_USER')
 
-connection = pymysql.connect(host='localhost',
-                            user=username,
-                            password='',
-                            db='RecipeBook')
                             
-try:
-    with connection.cursor() as cursor:
-        sql = "SELECT user_name FROM USER;"
-        cursor.execute(sql)
-        result=cursor.fetchall()
-
-finally:
-    connection.close()
-    
