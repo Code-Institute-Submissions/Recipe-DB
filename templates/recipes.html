@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="landing-block">
-        <h1>This is a the Recipes Page</h1>
+        <h1>This is the Recipes Page</h1>
+        <ul class="collapsible popout">
+            {% for row in recipeResult %}
+            <li>
+              <div class="collapsible-header"><i class="material-icons">local_dining</i>{{row["recipe_name"]}}</div>
+              <div class="collapsible-body"><span>{{row["method"]}}</span></div>
+            </li>
+            {% endfor %}
+        </ul>
+          
     </div>
 {% endblock %}
