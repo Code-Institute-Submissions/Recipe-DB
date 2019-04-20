@@ -1,8 +1,6 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for
-from flask import Blueprint
 from flask_pymongo import PyMongo
-from flask_paginate import Pagination, get_page_parameter
 from bson.objectid import ObjectId
 
 app = Flask (__name__)
@@ -12,19 +10,17 @@ app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
 mongo = PyMongo(app)
 
+# Landing page + view recipe list
 @app.route('/')
 @app.route('/recipes')
 def get_recipes():
-    return render_template("recipes.html", result=mongo.db.recipe.find().limit(6))
+    return render_template("recipes.html", result=mongo.db.recipe.find().limit(5))
 
 @app.route('/recipes_next')    
 def get_next():
-    return render_template("recipes.html", result=mongo.db.recipe.find().skip(6).limit(6))
-    
-@app.route('/recipes_3')    
-def get_next():
-    return render_template("recipes.html", result=mongo.db.recipe.find().skip(6).limit(6))
-    
+    return render_template("recipes.html", result=mongo.db.recipe.find().skip(5).limit(5))
+
+# add recipes + insert function    
 @app.route('/addrecipe')
 def add_recipe():
     return render_template("addrecipe.html")
@@ -34,13 +30,15 @@ def insert_recipe():
     recipe=mongo.db.recipe
     recipe.insert_one(request.form.to_dict())
     return redirect(url_for('get_recipes'))
-    
+
+# edit function
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipe.find_one({"_id" : ObjectId(recipe_id)})
     all_categories = mongo.db.categories.find()
     return render_template('editrecipe.html', recipe=the_recipe, categories=all_categories)
-    
+
+# Update function
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     recipe=mongo.db.recipe
@@ -55,18 +53,24 @@ def update_recipe(recipe_id):
         'method' : request.form.get('method'),
     })
     return redirect(url_for('get_recipes'))
-    
+
+# Delete function  
 @app.route('/delete_recipe<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipe.remove({"_id" : ObjectId(recipe_id)})
     return redirect(url_for('get_recipes'))
     
-
+# View single reipe. 
 @app.route('/view_recipe<recipe_id>')
 def view_recipe(recipe_id):
     the_recipe = mongo.db.recipe.find_one({"_id" : ObjectId(recipe_id)})
     all_categories = mongo.db.categories.find()
     return render_template('view_recipe.html', recipe=the_recipe, categories=all_categories)
+    
+#statistics page
+@app.route('/stats')
+def show_stats():
+    return render_template("stats.html")
     
 
 if __name__ == '__main__':

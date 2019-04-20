@@ -21,8 +21,11 @@
                 </li>
                 {% endfor %}
             </ul>
-        <a href="{{ url_for ("get_next") }}" class="btn waves-effect waves-light" type="submit" name="action">More Records
-            <i class="material-icons right">send</i>
+        <a href="{{ url_for ("get_recipes") }}" class="btn waves-effect waves-light" type="submit" name="action">Prev Records
+            <i class="material-icons left">navigate_before</i>
+        </a>
+        <a href="{{ url_for ("get_next") }}" class="btn waves-effect waves-light" type="submit" name="action">Next Records
+            <i class="material-icons right">navigate_next</i>
         </a>
     </div>
 
