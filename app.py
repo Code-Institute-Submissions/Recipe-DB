@@ -1,6 +1,8 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for
+from flask import Blueprint
 from flask_pymongo import PyMongo
+from flask_paginate import Pagination, get_page_parameter
 from bson.objectid import ObjectId
 
 app = Flask (__name__)
@@ -14,6 +16,14 @@ mongo = PyMongo(app)
 @app.route('/recipes')
 def get_recipes():
     return render_template("recipes.html", result=mongo.db.recipe.find().limit(6))
+
+@app.route('/recipes_next')    
+def get_next():
+    return render_template("recipes.html", result=mongo.db.recipe.find().skip(6).limit(6))
+    
+@app.route('/recipes_3')    
+def get_next():
+    return render_template("recipes.html", result=mongo.db.recipe.find().skip(6).limit(6))
     
 @app.route('/addrecipe')
 def add_recipe():
