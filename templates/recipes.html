@@ -2,12 +2,14 @@
 {% block content %}
     <div class="landing-block">
         <h1>This is the Recipes Page</h1>
-        <ul class="collapsible popout">
-            {% for recipe in result %}
-                <h4>{{recipe.recipe_name}}</h4>
-                <h5>{{recipe.cuisine}}</h5>
-            {% endfor %}
-        </ul>
+            <ul class="collapsible expandable">
+                {% for recipe in result %}
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">local_dining</i>{{recipe.recipe_name}}</div>
+                    <div class="collapsible-body"><span>{{recipe.method}}</span></div>
+                </li>
+                {% endfor %}
+            </ul>
           
     </div>
 {% endblock %}
