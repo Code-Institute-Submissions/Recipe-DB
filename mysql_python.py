@@ -16,11 +16,7 @@ app = Flask (__name__)
 
 @app.route('/')
 def getLanding():
-    cursor = connection.cursor()
-    sql = "SELECT * from USER"
-    cursor.execute(sql)
-    result = cursor.fetchall()
-    return render_template("landing_page.html", result=result)
+    return render_template("landing_page.html")
 
 @app.route('/recipes')
 def getRecipes():
