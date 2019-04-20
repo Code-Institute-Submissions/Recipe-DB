@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 app = Flask (__name__)
 
 app.config["MONGO_DBNAME"] = "RecipeBook"
-app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
+app.config["MONGO_URI"] = 'mongodb+srv://root:r00tUser@recipecluster-t7ztj.mongodb.net/RecipeBook?retryWrites=true'
 
 mongo = PyMongo(app)
 
@@ -66,12 +66,7 @@ def view_recipe(recipe_id):
     the_recipe = mongo.db.recipe.find_one({"_id" : ObjectId(recipe_id)})
     all_categories = mongo.db.categories.find()
     return render_template('view_recipe.html', recipe=the_recipe, categories=all_categories)
-    
-#statistics page
-@app.route('/stats')
-def show_stats():
-    return render_template("stats.html")
-    
+   
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
