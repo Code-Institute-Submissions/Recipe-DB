@@ -3,11 +3,9 @@
     <div class="landing-block">
         <h1>This is the Recipes Page</h1>
         <ul class="collapsible popout">
-            {% for row in recipeResult %}
-            <li>
-              <div class="collapsible-header"><i class="material-icons">local_dining</i>{{row["recipe_name"]}}</div>
-              <div class="collapsible-body"><span>{{row["method"]}}</span></div>
-            </li>
+            {% for recipe in result %}
+                <h4>{{recipe.recipe_name}}</h4>
+                <h5>{{recipe.cuisine}}</h5>
             {% endfor %}
         </ul>
           
