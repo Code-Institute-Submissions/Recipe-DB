@@ -1,1 +1,1 @@
-web: python mysql_python.py
+web: python app.py
