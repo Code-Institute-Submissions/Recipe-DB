@@ -60,7 +60,7 @@ def delete_recipe(recipe_id):
     mongo.db.recipe.remove({"_id" : ObjectId(recipe_id)})
     return redirect(url_for('get_recipes'))
     
-# View single reipe. 
+# View single reipe. Includes view counter update. 
 @app.route('/view_recipe<recipe_id>')
 def view_recipe(recipe_id):
     the_recipe = mongo.db.recipe.find_one({"_id" : ObjectId(recipe_id)})

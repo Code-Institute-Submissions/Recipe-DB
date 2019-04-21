@@ -2,25 +2,10 @@
     padding: 20px 30px 20px 30px;
 }
 .btn-right {
-    height: 24px;
-    width: 60px;
-    line-height: 24px;
-    margin: 5px 5px;
-    padding: 0 0.5em;
+    height: 22px;
+    width: 54px;
+    line-height: 22px;
+    margin: 4px 4px;
+    padding: 0 0.6em;
 }
 
-.pagination-page-info {
-    padding: .6em;
-    padding-left: 0;
-    width: 40em;
-    margin: .5em;
-    margin-left: 0;
-    font-size: 12px;
-}
-.pagination-page-info b {
-    color: black;
-    background: #6aa6ed;
-    padding-left: 2px;
-    padding: .1em .25em;
-    font-size: 150%;
-}
