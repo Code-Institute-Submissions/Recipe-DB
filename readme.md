@@ -29,7 +29,7 @@ Single Screen CRUD from the landing page : This informed the whole design. Havin
 ### Features left to implement
 
 Unfortunately there was a lot of time wasted in my project due to trying to achive this using mySQL instead of MongoDB. Whilst I carried out a lot of work designing a relational db schema, I found the lack of clarity on how to integrate with Pymysql and/or flask-mysql was bringing my work to a standstill. 
-Eventually I felt that I had no choice but to migrate to a MongoDB database and felt this to be much more user-friendly. The CodeInstitue's resources were also of more use re MongoDB - frankly I wish that I had elected to use MongoDb from day 1.
+Eventually I felt that I had no choice but to migrate to a MongoDB database and felt this to be much more user-friendly. The CodeInstitue's resources were also of more use re MongoDB - frankly I wish that I had elected to use MongoDb from day 1. The version control on git should confirm the issues faced. 
 For information I have included the mySQL Schema and ERD. 
 
 ## Technologies Used
@@ -50,6 +50,9 @@ Unfortunately due to the nature of the project, I didn't feel that there was muc
 
 The app is deployed on Heroku. There are no differences between the local and deployed versions. 
 I came across an issue when initially trying to host on heroku caused by the fact that I had initially obscured the mongodb connection. However the app will only successfully launch with the connection SRI noted in the app body. 
+
+The link for the heroku app is https://andyrecipedb.herokuapp.com/
+The github is https://github.com/andrewporritt77/Recipe-DB
 
 ## Credits
 
